@@ -1,0 +1,26 @@
+// Java Program to Find Modular Multiplicative Inverse using Fermat’s Little Theorem
+import java.util.*;
+class fermatMod{
+  public static void main(String args[]){
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Enter the value of a: ");
+    int a = sc.nextInt();
+    System.out.println("Enter the value of p: ");
+    int p = sc.nextInt();
+    
+    modularInverse(a, p);
+  }
+  
+  static int checkFermat(int a, int p){
+    int n = (int) Math.pow(a, p-1) % p;
+    return n;
+  }
+  
+  static void modularInverse(int a, int p){
+    if(checkFermat(a, p)!=1) System.out.println("Inverse does not exist");
+    else{
+      int inverse = (int) Math.pow(a, p-2) % p;
+      System.out.println("Modular Multiplicative Inverse is: "+inverse);
+    }
+  }
+}
